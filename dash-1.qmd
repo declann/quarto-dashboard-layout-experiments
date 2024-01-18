@@ -26,7 +26,7 @@ md`things at the top`
 
 embed = require('vega-embed')
 
-embed(
+/*embed(
   {
   width : layoutWidth.viz,//"container",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -45,7 +45,7 @@ embed(
   }
 }
 
-)
+)*/
 
 a = embed(
   {
