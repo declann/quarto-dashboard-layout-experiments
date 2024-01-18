@@ -2,7 +2,10 @@
 title: "hello"
 author: "declan"
 format: dashboard
+
 ---
+
+::: {#top-row .ojs-track-layout}
 
 ## Row {height=30%}
 
@@ -10,7 +13,12 @@ format: dashboard
 md`things at the top`
 ```
 
+:::
+
 ## bottom
+
+::: {#viz .ojs-track-layout}
+
 
 ```{ojs}
 //| title: a vega viz
@@ -19,6 +27,7 @@ embed = require('vega-embed')
 
 embed(
   {
+  width : "container",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A simple bar chart with embedded data.",
   "data": {
@@ -40,7 +49,16 @@ embed(
 
 ```
 
+:::
+
+
+
 ```{ojs}
 
 width
+
+
+layoutWidth
+
+
 ```
