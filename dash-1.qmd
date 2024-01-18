@@ -1,11 +1,13 @@
 --- 
 title: "hello"
 author: "declan"
-format: dashboard
+format:
+  dashboard:
+    orientation: rows
+
 
 ---
 
-::: {#top-row .ojs-track-layout}
 
 ## Row {height=30%}
 
@@ -13,19 +15,39 @@ format: dashboard
 md`things at the top`
 ```
 
-:::
 
 ## bottom
 
 ::: {#viz .ojs-track-layout}
 
 
-```{ojs}
+```{ojs #viz .ojs-track-layout}
 //| title: a vega viz
 
 embed = require('vega-embed')
 
 embed(
+  {
+  width : layoutWidth.viz,//"container",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
+      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
+      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+}
+
+)
+
+a = embed(
   {
   width : "container",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -46,19 +68,37 @@ embed(
 
 )
 
+{
+  a;
+  window.dispatchEvent(new Event('resize'))
+}
+
+html`<style>
+.vega-embed {
+  width: 100%;
+  height: 100%;
+}
+</style>
+`
+
 
 ```
 
 :::
 
+## ff
 
+::: {.flow}
 
 ```{ojs}
 
+md`width:`
 width
 
-
+md`layoutWidth:`
 layoutWidth
 
 
 ```
+
+:::
