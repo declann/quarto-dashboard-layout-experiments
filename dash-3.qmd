@@ -77,6 +77,10 @@ svg, .chart-wrapper, .vega-embed, .vega-embed-wrapper, .observablehq, /*.ojs-cel
   height:100%
 }
 
+/*svg, .vega-embed {
+  min-height: 100px;
+}*/
+
 </style>
 
 `
