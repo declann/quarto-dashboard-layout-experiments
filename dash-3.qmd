@@ -1,0 +1,88 @@
+--- 
+title: "hello"
+author: "declan"
+format:
+  dashboard:
+    orientation: columns
+---
+
+
+## Row
+
+```{ojs}
+md`things at the left`
+```
+
+
+## bottom
+
+```{ojs}
+//| title: a vega viz, can it cover entire space?
+
+embed = require('vega-embed')
+
+a = { height; return embed(
+  {
+  //config: {autosize: 'fit-y', resize: true}, // I tried numerous things here
+  width : "container",
+  height: "container",//+(getComputedStyle(document.querySelector('#ojs-cell-2-2')).height.slice(0,-2))-50,//"container",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "values": [
+      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
+      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
+      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+}, {renderer:'svg'}
+
+)}
+
+
+import {height} from "@fil/height"
+
+```
+
+```{ojs}
+//| output: false
+
+
+
+{
+  height;
+  //document.querySelector('.vega-embed').style.height = getComputedStyle(document.querySelector('#ojs-cell-2-2')).height.slice(0,-2)
+}
+
+{
+  a; // force resize event on load or user sees nothing
+  // see limitations here: https://vega.github.io/vega-lite/docs/size.html#specifying-responsive-width-and-height
+  window.dispatchEvent(new Event('resize'))
+}
+
+// also necessary for responsive width
+html`<style>
+body {
+  height: 100vh;
+}
+.pc {
+  height: 100%;
+}
+.vega-embed {
+  width: 100%;
+  height: calc(100%);
+}
+
+svg, .chart-wrapper, .vega-embed, .vega-embed-wrapper, .observablehq, .ojs-cell-2-2, .html-fill-item, .cell-output, .card, .bslib-grid {
+  height:100%
+}
+
+</style>
+
+`
+```
