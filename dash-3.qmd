@@ -43,9 +43,13 @@ a = { return embed(
 
 )}
 
-
-
 ```
+
+::: {#b height="50%"}
+
+hello
+
+:::
 
 ```{ojs}
 //| output: false
