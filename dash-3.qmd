@@ -21,11 +21,10 @@ md`things at the left`
 
 embed = require('vega-embed')
 
-a = { height; return embed(
+a = { return embed(
   {
-  //config: {autosize: 'fit-y', resize: true}, // I tried numerous things here
   width : "container",
-  height: "container",//+(getComputedStyle(document.querySelector('#ojs-cell-2-2')).height.slice(0,-2))-50,//"container",
+  height: "container",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A simple bar chart with embedded data.",
   "data": {
@@ -45,19 +44,11 @@ a = { height; return embed(
 )}
 
 
-import {height} from "@fil/height"
 
 ```
 
 ```{ojs}
 //| output: false
-
-
-
-{
-  height;
-  //document.querySelector('.vega-embed').style.height = getComputedStyle(document.querySelector('#ojs-cell-2-2')).height.slice(0,-2)
-}
 
 {
   a; // force resize event on load or user sees nothing
@@ -78,7 +69,7 @@ body {
   height: calc(100%);
 }
 
-svg, .chart-wrapper, .vega-embed, .vega-embed-wrapper, .observablehq, .ojs-cell-2-2, .html-fill-item, .cell-output, .card, .bslib-grid {
+svg, .chart-wrapper, .vega-embed, .vega-embed-wrapper, .observablehq, /*.ojs-cell-2-2,*/ .html-fill-item, .cell-output, .card, .bslib-grid {
   height:100%
 }
 
